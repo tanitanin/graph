@@ -36,7 +36,7 @@ void dijkstra(Graph &g, unsigned int s) {
       const int cost  = g[done_node].cost + weight;
       if(g[next].cost < 0 || cost < g[next].cost) {
         g[next].cost = cost;
-        g[next].from = i;
+        g[next].from = done_node;
       }
     }
   }
