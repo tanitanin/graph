@@ -2,20 +2,20 @@
 OBJ = graph.o \
       dijkstra.o \
 
-TEST_OBJ = timer.o \
-           graph_test.o \
-           dijkstra_test.o \
-           test.o \
+TEST_OBJ = test/timer.o \
+           test/graph_test.o \
+           test/dijkstra_test.o \
+           test/test.o \
 
-CXXFLAGS = -O2 -std=gnu++11
+CXXFLAGS = -O2 -std=gnu++11 -I .
 
 all: $(OBJ)
 
 test: $(OBJ) $(TEST_OBJ)
-	$(CXX) $(CXXFLAGS) $^ -o test
-	./test
+	$(CXX) $(CXXFLAGS) -I . $^ -o test/test
+	./test/test
 	rm -f $(OBJ) $(TEST_OBJ)
-	rm -f test
+	rm -f test/test
 
 clean:
 	rm -f *.o *.out *.exe
