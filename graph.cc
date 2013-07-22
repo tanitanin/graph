@@ -50,6 +50,6 @@ Node &Graph::operator[](const unsigned int n) {
 }
 
 // ノードの数
-unsigned int Graph::size() {
+unsigned int Graph::size() const {
   return nodes_.size();
 }

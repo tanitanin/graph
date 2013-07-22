@@ -47,6 +47,6 @@ class Graph {
     void add(Node &node);
     Node &node(unsigned int index);
     Node &operator[](const unsigned int n);
-    unsigned int size();
+    unsigned int size() const;
 };
 
