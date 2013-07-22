@@ -2,6 +2,7 @@
 
 #include "graph_test.h"
 #include "dijkstra_test.h"
+#include "bellman_ford_test.h"
 
 int main(int argc, char **argv) {
   //::testing::InitGoogleTest(&argc, argv);
@@ -9,6 +10,7 @@ int main(int argc, char **argv) {
   
   graph_test();
   dijkstra_test();
+  bellman_ford_test();
 
   return 0;
 }

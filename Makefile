@@ -1,10 +1,12 @@
 
 OBJ = graph.o \
       dijkstra.o \
+      bellman_ford.o \
 
 TEST_OBJ = test/timer.o \
            test/graph_test.o \
            test/dijkstra_test.o \
+           test/bellman_ford_test.o \
            test/test.o \
 
 CXXFLAGS = -O2 -std=gnu++11 -I .
