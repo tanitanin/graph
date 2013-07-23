@@ -1,23 +1,28 @@
 
-OBJ = graph.o \
-      dijkstra.o \
-      bellman_ford.o \
+INC = -I . -I inc \
 
-TEST_OBJ = test/timer.o \
-           test/graph_test.o \
-           test/dijkstra_test.o \
-           test/bellman_ford_test.o \
-           test/test.o \
+OBJ = src/graph.o \
+      src/dijkstra.o \
+      src/bellman_ford.o \
 
-CXXFLAGS = -O2 -std=gnu++11 -I .
+LIB_NAME = libgraph.a
 
-all: $(OBJ)
+CXXFLAGS = -O2 -std=gnu++11 $(INC)
+ARFLAGS = rv
 
-test: $(OBJ) $(TEST_OBJ)
-	$(CXX) $(CXXFLAGS) -I . $^ -o test/test
-	./test/test
-	rm -f $(OBJ) $(TEST_OBJ)
-	rm -f test/test
+$(LIB_NAME): $(OBJ)
+	$(AR) $(ARFLAGS) $@ $^
 
+.PHONY: all
+all: $(LIB_NAME)
+
+.PHONY: test
+test: $(LIB_NAME)
+	$(MAKE) -C test
+	$(MAKE) -C test run
+	$(MAKE) -C test clean
+
+.PHONY: clean
 clean:
-	rm -f *.o *.out *.exe
+	@rm -f $(OBJ)
+	@rm -f $(LIB_NAME)
